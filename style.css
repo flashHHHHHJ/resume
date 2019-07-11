@@ -1,0 +1,272 @@
+/* 头像框周围的动画效果 */
+@keyframes gradualChange{
+    0% {
+        box-shadow: 0 0 3px 3px rgb(111,173,238);
+    }
+    100%{
+        box-shadow: 0 0 3px 8px rgb(111,173,238);
+    }
+}
+/* 进度条动画效果 */
+@keyframes progressBar1 {
+    from {
+        width: 0;
+    }
+    to {
+        width: 20%;
+        /*修改动画过程中进度条最终长度 */
+    }
+}
+@keyframes progressBar2 {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80%;
+    }
+}
+@keyframes progressBar3 {
+    from {
+        width: 0;
+    }
+    to {
+        width: 50%;
+    }
+}
+/* 小圆圈的缩放动画 */
+@keyframes gradualCircle {
+    from {
+        box-shadow: 0 0 4px 2px rgb(201, 224, 245);
+    }
+    to {
+        box-shadow: 0 0 4px 5px rgb(201, 224, 245);
+    }
+}
+/* 总布局 */
+.box{
+    display: flex;
+    height: 100vh;
+}
+.clear{
+    clear: both;
+}
+/* 左侧总布局设置flex */
+.sidebar_a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    background: url(http://coding.imweb.io/img/project/resume/bg.png ) #188eee;
+    color:  white;
+}
+/* 头像及其动画制作 */
+.portrait{
+    width: 10em;
+    height: 10em;
+    margin-bottom: 1em;
+    border-radius: 50%;
+    box-shadow: 0 0 0 6px rgb(111,173,238);
+}
+.portrait:hover{
+    animation: gradualChange 1.5s  infinite;
+}
+.name{
+    font-size: 30px;
+}
+.point{
+    font-size: 21px;
+}
+.point span{
+    margin: 0 15px;
+}
+/* 联系方式制作包含鼠标交互动作 */
+.contact-imfor{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    font-size: 16px;
+    margin: 30px 0;
+}
+.contact-imfor li{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.contact-imfor li a{
+    text-decoration: none;
+    color: white;
+}
+.contact-imfor li a:hover{
+    color: #f599e6;
+}
+/* 个人信息采用flex制作四宫格分配空间 */
+.personal-imfor{
+    display: flex;
+    flex-wrap: wrap;
+    width: 340px;
+    border: 1px rgb(68, 68, 68) solid;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px white;
+}
+.personal-imfor-items{
+    width: 40%;
+    flex-grow: 1;
+    font-size: 15px;
+    margin: 10px;
+}
+/* 右侧总布局设置为flex */
+.sidebar_b{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    text-align: center;
+    width: 55%;
+}
+/* 标题及左右横线设置 */
+.main-header{
+    position: relative;
+    width: 100px;
+    left: 45%;
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(24,142,238);
+    background: rgb(245,245,245);
+    z-index: 100;
+}
+.line-header{
+    position: relative;
+    width: 97%;
+    height: 1px;
+    left: 3%;
+    top: -35px;
+    background: rgb(204,204,204);
+}
+/* 文本具体内容设置 */
+.content-list{
+    padding-left: 20px;
+    margin: 25px;
+}
+.content-list li{
+    position: relative;
+    list-style: none;
+    text-align: left;
+    font-size: 16px;
+    color: black;
+    margin: 30px 0;
+}
+.content-list li span{
+    display: inline-block;
+    font-size: 14px;
+    color: #999;
+    margin-top: 10px;
+}
+/* 上部分动画制作 */
+.work-experience-list::before{
+    position: absolute;
+    content: "";
+    top: 0.3em;
+    left: -1.4em;
+    width: 0.8em;
+    height: 0.8em;
+    background: #188eee;
+    border-radius: 50%;
+    box-shadow: 0 0 4px 4px rgb(201,224,245);
+}
+.line{
+    position: absolute;
+    top: 1.3em;
+    left: -1em;
+    width: 1px;
+    height: 250px;
+    background: linear-gradient(to bottom,rgb(208,208,208) 80%,rgb(245,245,245));
+}
+.work-experience-list:hover::before{
+    animation: gradualCircle 1s alternate infinite;
+}
+/* 进度条静态效果 */
+.skill-list::after{
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    left: 0;
+    top: 70px;
+    content: "";
+    background: rgb(208,208,208);
+    border-radius: 2px;
+} 
+.progress-bar {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: 5px;
+    background: linear-gradient(to right, rgb(17, 122, 212), rgb(105, 203, 240));
+    border-radius: 2px;
+    z-index: 100;
+}
+.progress-bar1{
+    width: 20%;     /*修改静态时进度条长度*/
+}
+.progress-bar2{
+    width:80%;
+}
+.progress-bar3{
+    width: 50%;
+}
+/*鼠标放置时候的进度条动画*/
+.skill-list:hover .progress-bar{
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: 5px;
+    background: linear-gradient(to right, rgb(17, 122, 212), rgb(105, 203, 240));
+    border-radius: 2px;
+    z-index: 100;
+}
+.skill-list:hover .progress-bar1{
+    animation: progressBar1 1s forwards;
+
+}
+.skill-list:hover .progress-bar2 {
+    animation: progressBar2 1s forwards;
+}
+.skill-list:hover .progress-bar3 {
+    animation: progressBar3 1s forwards;
+}
+/* 了解、精通、熟悉 */
+.skill-list-label{
+    padding: 0 10px 0 10px;
+    float: right;
+    color: #999;
+    font-size: 12px;
+    border: 1px #999 solid;
+    border-radius: 10px;
+}
+/* 响应式布局设计（iPhone6） */
+@media (max-width: 768px){
+    .box{
+        display: block;
+    }
+    .sidebar_a{
+        width: 100%;
+        height: 100%;
+    }
+    .sidebar_b,.b-content{
+        width: 100%;
+    }
+    /* 内容显示部分微调 */
+    .line{
+        height: 360px;
+    }
+    .skills{
+        margin-left: 0px;
+    }
+    .main-header{
+        left: 38%;
+    }
+    .line-header{
+        width: 100%;
+        left: 0;
+    }
+}
