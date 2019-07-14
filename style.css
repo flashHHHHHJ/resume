@@ -67,6 +67,7 @@
     margin-bottom: 1em;
     border-radius: 50%;
     box-shadow: 0 0 0 6px rgb(111,173,238);
+    overflow: hidden;
 }
 .portrait:hover{
     animation: gradualChange 1.5s  infinite;
